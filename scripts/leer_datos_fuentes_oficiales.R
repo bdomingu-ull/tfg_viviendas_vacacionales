@@ -43,6 +43,9 @@ url_renta <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v
 
 # Descarga y lectura de cada dataset (ajustar decimal_mark si es necesario)
 vv    <- leer_istac_tsv(url_vv, ".")    # Viviendas vacacionales
+adr <- leer_istac_tsv(url_adr,".") # Viviendas de alquiler
+pob <-leer_istac_tsv(url_pob, ".") # Población
+renta <- leer_istac_tsv(url_renta, ".") #Media de Renta
 
 
 # ============================================================
@@ -65,9 +68,11 @@ leer_excel <- function(ruta_fichero, hoja) {
 # ============================================================
 # Modifica la ruta del fichero para adaptarla a la carpeta en la que tienes almacenados los datos
 # En la ruta, debemos usar barras del tipo '/' o no compilará el código
-ruta_excel_serpavi <- "C:/Users/benco/Documents/ULL/Curso 2025-2026 ULL/TFG/Ficheros/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
+ruta_excel_serpavi <- "C:/Users/marco/OneDrive/Escritorio/Marcos/Universidad/4º Carrera/TFG/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
 hoja_excel_serpavi <- "Municipios"
 datos_serpavi <- leer_excel(ruta_excel_serpavi, hoja_excel_serpavi)
+
+"C:/Users/benco/Documents/ULL/Curso 2025-2026 ULL/TFG/Ficheros/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
 
 # ============================================================
 # Descarga del Censo de Viviendas 2021 (INE, API JSON)
