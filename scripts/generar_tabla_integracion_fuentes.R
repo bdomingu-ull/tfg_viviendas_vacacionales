@@ -54,7 +54,7 @@ vv_filtrada <- vv_filtrada %>%
 #
 
 medidas_seleccionadas <- c(
-  "VIVIENDAS_VACACAIONALES_DISPONIBLES",   
+  "VIVIENDAS_VACACIONALES_DISPONIBLES",   
   "VIVIENDAS_VACACIONALES_RESERVADAS",    
   "PLAZAS_DISPONIBLES" 
 )
@@ -75,3 +75,5 @@ vv_filtrada <- vv_filtrada %>%
 # ============================================================
 # 4) Calcular medias anuales
 # ============================================================
+
+# Fuente 2: Renta
