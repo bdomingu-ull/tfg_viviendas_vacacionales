@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{smposter}[2024/10/22 Poster para Trabajo Fin de Grado para la sección de Matemáticas de la Facultad de Ciencias ULL]
+\RequirePackage[angle=0]{background}
+\RequirePackage{tikz}
+\RequirePackage{fancyhdr}
+%%\ProvidesPackage{fancyhdr}
+\RequirePackage[english,spanish]{babel}
+\AtBeginDocument{\selectlanguage{english}}
+
+%%\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{.75in}%{0.811in}
+%%\DeclareFixedFont{\titlefont}{OT1}{ppl}{b}{it}{.75in}%{0.811in}
+\DeclareFixedFont{\titlefont}{OT1}{ppl}{b}{n}{.75in}%{0.811in}
+
+\definecolor{titlecolor}{rgb}{0,.5,.5}
+\definecolor{ulla}{rgb}{0,.34375,.57422}
+\definecolor{mat}{rgb}{1,.423,.047}
+\definecolor{BoxCol}{rgb}{0,.34375,.57422}
+\definecolor{ull}{rgb}{.3411,.002353,.549}
+\definecolor{hull}{HTML}{5c068c}
+
+\newcommand\CONV[2]{\def\CONV{#1, #2}}
+\conference{\large\textcolor{hull}{{\bf TRABAJO FIN DE GRADO}, Convocatoria de \CONV}}
+
+
+\newcommand\marca[1]{}
+% \begin{tikzpicture}
+% \begin{scope}[scale=#1]
+%    \def \sw{ (0,0) -- (5.11,0) -- (10.22,05.67) -- (5.11,5.67)
+%    -- (5.11,16) -- (0,10.3) -- cycle}
+%    \filldraw[color=ulla!30,opacity=.2]\sw;
+% \end{scope}
+% \end{tikzpicture}
+% }
+\newcommand\wm{
+\backgroundsetup{contents=\marca{.42},vshift=-32,hshift=-20,opacity=.3}\BgThispage}
+
+%quitamos el logo de la sección arriba a la izquierda comentado las líneas siguientes
+%\IfFileExists{../logo/SM.pdf}{%
+%  \leftlogo[2.5]{../logo/SM.pdf}}
+%{}
+
+
+\def\title#1{\gdef\@title{\titlefont \textcolor{mat}{\linespread{0.4}\titlefont\selecfont #1}}}
+
+\definecolor{SectionCol}{rgb}{1,1,1}
+\AtBeginDocument{%
+\wm
+} 
+
+%redefinción del \maketitle redefinido ya en sciposter.cls
+\renewcommand{\maketitle}{%
+  \ifthenelse{\boolean{useleftlogo}}{%
+  \begin{minipage}[c]{\logowidth}
+     \printleftlogo
+  \end{minipage}
+  }{}
+  \begin{minipage}[c]{\titlewidth}
+    \begin{center}
+      \renewcommand{\baselinestretch}{2.3}\normalsize   %cambiado de 3.3 a 2.3 para disminuir espaciado entre líneas en el título
+      {\titlesize  \bf \@title}\par
+      \renewcommand{\baselinestretch}{1.0}\normalsize
+      \vspace{0.5\titleskip}
+      {\authorsize {\bf\@author} \par}
+      {\instsize
+       \vspace{0.2\titleskip}
+       \theinstitute \par
+       \ifthenelse{\equal{\printemail}{}}{%nothing
+         }{%
+         \vspace{0.2\titleskip}
+         \texttt{\printemail}
+         }
+      }
+    \end{center}
+  \end{minipage}%}}
+  \ifthenelse{\boolean{userightlogo}}{%
+  \begin{minipage}[c]{\logowidth}
+     \printrightlogo
+  \end{minipage}
+  }{}
+\vspace{\titleskip}
+}

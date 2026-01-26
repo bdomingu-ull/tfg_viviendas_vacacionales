@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%                               %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%    NEW MATH OPERATORS         %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%                               %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\sop}{\mathrm{sop}}
+\DeclareMathOperator{\dist}{\mathrm{dist}}
+\DeclareMathOperator{\diam}{\mathrm{diam}}
+\DeclareMathOperator{\lon}{\mathrm{long}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%                                %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%  NUEVOS COMANDOS MATEMÁTICOS   %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%                                %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\orint{\ensuremath{\varointctrclockwise}}
+\newcommand\mf[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand\cg[1]{\ensuremath{\mathcal{#1}}}
+\newcommand\bs[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand\mc[1]{\ensuremath{\mathcal{#1}}}
+\newcommand\mb[1]{\ensuremath{\mathbb{#1}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\newcommand\U{\ensuremath{\mathbb{D}}}
+\newcommand\ve{\ensuremath{\varepsilon}}
+\newcommand\vr{\ensuremath{\varrho}}
+\newcommand\ds{\displaystyle}
+\newcommand\p[1]{\ensuremath{\partial #1}}
+\newcommand\dn[1]{\ensuremath{\partial\sb{\vec{n}}#1\,}}
+\newcommand\nd[1]{\ensuremath{\partial\sb{\vec{n}\sb#1}}}
+
+\newcommand{\din}{\ensuremath{\mathbin{\rotatebox[origin=c]{-90}{$\in$}}}}
+\newcommand{\upar}{\ensuremath{\mathbin{\rotatebox[origin=c]{90}{$)$}}}}
+
+\makeatletter
+\newcommand*{\subsetsim}{%
+  \mathrel{%
+    \mathchoice
+    {\@subsetsim\displaystyle\scriptstyle}%
+    {\@subsetsim\textstyle\scriptstyle}%
+    {\@subsetsim\scriptstyle\scriptscriptstyle}%
+    {\@subsetsim\scriptscriptstyle\scriptscriptstyle}%
+  }%
+}
+\newcommand*{\@subsetsim}[2]{%
+  \sbox0{$\m@th#1\subset$}%
+  \sbox2{$\m@th#2\sim$}%
+  \sbox4{$\m@th#2$}%
+  \raisebox{.5\dimexpr\ht2-\ht4\relax}{%
+    \oalign{\copy0 \cr\hidewidth\copy2\hidewidth}%
+  }%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%                               %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%  NUEVOS ENTORNOS MATEMÁTICOS  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%                               %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define some unnumbered environments 
+\spnewtheorem*{nota}{Nota:}{\slshape}{\rmfamily}
+\spnewtheorem*{snota}{Nota}{\slshape}{\rmfamily}
+\spnewtheorem*{pf}{Demostración.}{\itshape}{\rmfamily}

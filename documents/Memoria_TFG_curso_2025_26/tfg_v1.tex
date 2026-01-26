@@ -1,0 +1,131 @@
+%Trabajo Fin de Grado en Matematicas curso 2025-26
+%version 2025-10-02
+\documentclass[vecarrow,envcountsame,envcountchap,oribibl]{svmono}
+\usepackage[spanish]{babel} \decimalpoint
+\usepackage[latin1]{inputenc}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage[a4paper]{geometry}
+\usepackage[file]{smtfg}
+   %\usepackage{smtfg} para mostrar hipervínculos en negro (compilar para imprimir en papel)
+   %\usepackage[file]{smtfg} para mostrar hipervínculos en azul (compilar para crear fichero .pdf optimizado para navegación)
+
+\smartqed
+% para indentar a la derecha el símbolo de final de demostración (este comando viene definido en el fichero clase svmono.cls)
+
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%  propiedades del fichero pdf  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{%
+   pdftitle={Como se titule este Trabajo Fin de Grado},
+   pdfauthor={Autor del TFG},
+   pdfsubject={Línea del TFG}, 
+   pdfkeywords={Palabras Clave}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%  tutores  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PT{Nombre del Primer Tutor}
+\InsPT{Universidad de La Laguna\\
+38200 La Laguna, Tenerife}
+\DptoPT{Departamento del Primer TutorQueEsLargo}
+\EmPT{email1Tutor@ull.es}
+
+\ST{Nombre del Segundo Tutor}
+\InsST{Universidad de La Laguna\\
+38200 La Laguna, Tenerife}
+\DptoST{Departamento del Segundo Tutor}
+\EmST{email2Tutor@ull.es}
+
+\CONV{mes}{a\~no}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%   comandos personales   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define an unnumbered environment 
+\spnewtheorem*{prop}{Propiedades}{\itshape}{\rmfamily}
+
+% mycommands.tex contiene los comandos (atajos) particulares para el autor
+% añade en mycommmands.tex los que quieras
+\input{mycommands.tex}  
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%     documento     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\includeonly{./frontmatter/ack,./frontmatter/res,./frontmatter/intro,./mainmatter/chap1,./mainmatter/chap2,./mainmatter/conclusiones,./mainmatter/app,./backmatter/biblio,./backmatter/acron}
+
+%Si solo queremos procesar el segundo capítulo, pero conservando todas las referencias que se hayan utilizado en las otras partes...
+%\includeonly{./mainmatter/chap2}
+%lo que producirá un pdf con la portada, el índice y el capítulo 2 únicamente
+
+
+
+
+\begin{document}\allowdisplaybreaks
+
+\author{Autor del TFG}
+\EmAut{emailAuTFG@ull.edu.es}
+\title{\slshape T\'{\i}tulo de este trabajo fin de grado}
+\subtitle{Subtitle in English of this dissertation}
+
+\pdfbookmark[-1,bold,italic]{Título del TFG}{title}
+\maketitle
+
+\frontmatter
+
+
+\bookmarksetup{bold,color=blue!150}
+\include{./frontmatter/ack}
+\clearemptydoublepage
+\bookmarksetup{bold=false,color={},color=blue}
+\include{./frontmatter/res}
+\clearemptydoublepage
+
+\pdfbookmark[-1,bold,color=brown!200]{\contentsname}{Contents}
+\tableofcontents
+\bookmarksetup{bold=false,color=magenta}
+\include{./frontmatter/intro}
+    
+\clearemptydoublepage
+
+\mainmatter
+\bookmarksetup{bold=false,color={},color=blue}
+\include{./mainmatter/chap1}
+\clearpage
+\include{./mainmatter/chap2}
+%\clearpage
+%\include{./mainmatter/chap3}
+%\clearpage
+%\include{./mainmatter/chap4}
+\clearpage
+\include{./mainmatter/conclusiones}
+
+\appendix
+\include{./mainmatter/app}
+
+\backmatter
+
+\bookmarksetup{color=bibcolor}
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliografía}
+\include{./backmatter/biblio}
+
+\bookmarksetup{color=ullv}
+\include{./backmatter/acron}
+
+\bookmarksetup{color=ullv}
+\printindex
+
+\end{document} 
