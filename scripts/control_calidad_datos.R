@@ -28,26 +28,13 @@ na_por_variable_anio <- tab_total %>%
   group_by(TIME_PERIOD_CODE) %>%
   summarise(
     across(
-      .cols = -c(TERRITORIO_CODE, TIME_PERIOD_CODE),
-      .fns  = ~ sum(is.na(.)),
-      .names = "na_{.col}"
-    ),
-    .groups = "drop"
-  )
-
-na_por_variable_anio
-
-na_por_variable_anio <- tab_total %>%
-  group_by(TIME_PERIOD_CODE) %>%
-  summarise(
-    across(
       .cols = everything(), # R ya sabe que debe excluir TIME_PERIOD_CODE por estar en group_by
       .fns  = ~ sum(is.na(.)),
       .names = "na_{.col}"
     ),
     .groups = "drop"
   )
-
+na_por_variable_anio
 # ============================================================
 # 2) Coherencia temporal
 # ============================================================
@@ -74,6 +61,7 @@ saltos_sospechosos
 # ============================================================
 # 3) Coherencia interna entre variables
 # ============================================================
+# Resultado: Una tabla con los municipios donde la relación plazas/vivienda es imposible.
 coherencia_ratios <- tab_total %>%
   mutate(
     plazas_por_vivienda = PLAZAS_DISPONIBLES_M_PER_MIL / VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL,
@@ -82,8 +70,9 @@ coherencia_ratios <- tab_total %>%
   filter(es_incoherente) %>%
   select(TERRITORIO_CODE, TIME_PERIOD_CODE, VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, PLAZAS_DISPONIBLES_M_PER_MIL, plazas_por_vivienda)
 
-# Resultado: Una tabla con los municipios donde la relación plazas/vivienda es imposible.
 
+
+# Filtra precios 5 veces más altos que la media
 coherencia_precios <- tab_total %>%
   group_by(TIME_PERIOD_CODE) %>%
   summarise(
@@ -93,7 +82,7 @@ coherencia_precios <- tab_total %>%
     desviacion = ALQUILER_MED_M_T_INMU_COL / media_anual
   ) %>%
   filter(desviacion > 5 | desviacion < 0.2) 
-# Filtra precios 5 veces más altos que la media
+
 
 # ============================================================
 # 4) Heterogeneidad y valores extremos
