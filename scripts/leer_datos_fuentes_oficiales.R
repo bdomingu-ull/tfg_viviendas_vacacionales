@@ -39,7 +39,7 @@ leer_istac_tsv <- function(url_tsv, decimal_mark = ".") {
 url_vv   <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00065A_000061/1.14.tsv"
 url_adr  <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/C00065A_000062/1.10.tsv"
 url_pob  <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30245A_000002/1.4.tsv"
-url_renta <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30325A_000001/2.1.tsv"
+url_renta <- "https://datos.canarias.es/api/estadisticas/statistical-resources/v1.0/datasets/ISTAC/E30325A_000001/2.3.tsv"
 
 # Descarga y lectura de cada dataset (ajustar decimal_mark si es necesario)
 vv    <- leer_istac_tsv(url_vv, ".")    # Viviendas vacacionales
@@ -94,3 +94,4 @@ df_censo <- datos_json %>%
     anio             = 2021                      # Año único del censo
   ) %>%
   dplyr::select(nombre_municipio, tipo_vivienda, anio, valor)
+

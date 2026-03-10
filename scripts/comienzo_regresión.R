@@ -5,7 +5,7 @@
 # ============================================================
 
 # --- Carga de paquetes necesarios ---
-pkgs <- c("dplyr", "stringr","tidyr","ggplot2", "plotly")
+pkgs <- c("dplyr", "stringr","tidyr","ggplot2", "plotly","ggpubr")
 inst <- setdiff(pkgs, rownames(installed.packages()))
 if (length(inst)) install.packages(inst, dependencies = TRUE,
                                    type = ifelse(.Platform$OS.type == "windows", "binary", "both"))
@@ -58,12 +58,19 @@ tab_mostrar <- tab_total %>%
   
 #Luego creamos la tabla con los datos
 tab_mostrar <- bind_rows(
-  "Min Mediana" = tab_mostrar  %>% 
+  "Min Mediana" = tab_mostrar %>% 
     mutate(distancia = calcular_dist_mediana(VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL)) %>%
-    slice_max(order_by = pick(13), n = 2)%>%
-    select(-distancia),
-  "Max" = tab_mostrar %>% slice_max(order_by = pick(4), n = 2),
-  "Min" = tab_mostrar %>% slice_min(order_by = pick(4), n = 2),
+    slice_max(order_by = pick(13), n = 2) %>%
+    select(-distancia) -> m_med, # Guardamos un momento para el siguiente filtro
+  
+  "Max" = tab_mostrar %>% 
+    filter(!TERRITORIO_CODE %in% m_med$TERRITORIO_CODE) %>% # Excluye los anteriores
+    slice_max(order_by = pick(4), n = 2) -> m_max,
+  
+  "Min" = tab_mostrar %>% 
+    filter(!TERRITORIO_CODE %in% c(m_med$TERRITORIO_CODE, m_max$TERRITORIO_CODE)) %>% # Excluye ambos
+    slice_min(order_by = pick(4), n = 2),
+  
   .id = "Extremo"
 )
 
@@ -130,3 +137,55 @@ p <- ggplot(tab_tot_mostrar, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MI
 # tooltip = "text" le dice que use lo que escribimos en el paste() de arriba
 ggplotly(p, tooltip = "text")
 
+#Haremos lo mismo pero con el alquiler mediano por unidad
+
+ggplot(tab_tot_mostrar, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
+tabla_correlaciones <- tab_tot_mostrar %>%
+  group_by(TERRITORIO_CODE) %>%
+  summarize(Correlacion = cor(VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, 
+                              ALQUILER_MED_M_T_INMU_COL, 
+                              method = "pearson", 
+                              use = "complete.obs"))
+
+#Haremos lo mismo pero con el alquiler mediano por unidad y con la renta media
+
+ggplot(tab_tot_mostrar, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
+tabla_correlaciones_NU <- tab_tot_mostrar %>%
+  group_by(TERRITORIO_CODE) %>%
+  summarize(Correlacion = cor(RENTA_NETA_MEDIA_HOGAR, 
+                              ALQUILER_MED_M_T_INMU_COL, 
+                              method = "pearson", 
+                              use = "complete.obs"))
+
+#Ahora con el alquiler mediano por total inmueble familia colectiva
+ggplot(tab_tot_mostrar, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
+tabla_correlaciones_NC <- tab_tot_mostrar %>%
+  group_by(TERRITORIO_CODE) %>%
+  summarize(Correlacion = cor(RENTA_NETA_MEDIA_HOGAR, 
+                              ALQUILER_MED_M_T_INMU_U, 
+                              method = "pearson", 
+                              use = "complete.obs"))

@@ -188,7 +188,6 @@ pob_filtrada <- pob_filtrada %>%
 tab_total <- vv_filtrada %>%
   left_join(renta_filtrada, by= c("TERRITORIO_CODE", "TIME_PERIOD_CODE")) %>%
   left_join(pob_filtrada, by=c("TERRITORIO_CODE", "TIME_PERIOD_CODE"))
-
 # ============================================================
 # Fuente 4: SERPAVI 
 # ============================================================
