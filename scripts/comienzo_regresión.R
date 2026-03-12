@@ -112,20 +112,13 @@ ggplot(tab_tot_mostrar, aes(x = TIME_PERIOD_CODE, y = RENTA_NETA_MEDIA_HOGAR)) +
 # 5) Análisis bivariantes preliminar
 # ============================================================
 
-#Gráfico de dispersión y regresión lineal
-ggplot(tab_tot_mostrar, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
-  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
-  geom_smooth(method = "lm", color = "red", se = FALSE) +
-  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
-  theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
-  
+
 # Con esta forma podemos ver datos llevando el cursor a la gráfica
 p <- ggplot(tab_tot_mostrar, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, 
                                  y = ALQUILER_MED_M_T_INMU_COL)) +
   geom_point(aes(text = paste("Territorio:", TERRITORIO_CODE,
-                          "<br>Vacacionales:", VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL,
-                          "<br>Alquiler:", ALQUILER_MED_M_T_INMU_COL)),color = "darkgreen", alpha = 0.6, size = 3) +
+                              "<br>Vacacionales:", VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL,
+                              "<br>Alquiler:", ALQUILER_MED_M_T_INMU_COL)),color = "darkgreen", alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   facet_wrap(~ TERRITORIO_CODE, scales = "free") +
   theme_minimal() +
@@ -139,13 +132,101 @@ ggplotly(p, tooltip = "text")
 
 #Haremos lo mismo pero con el alquiler mediano por unidad
 
-ggplot(tab_tot_mostrar, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
+
+#Gráfico de dispersión y regresión lineal
+#1.1 Colectivo
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
-  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  
+
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#1.2 Unifamiliar
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#2.1 Colectivo
+
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_M2_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+#2.2 Unifamiliar
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+
+ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
+ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+
 
 #Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
 tabla_correlaciones <- tab_tot_mostrar %>%

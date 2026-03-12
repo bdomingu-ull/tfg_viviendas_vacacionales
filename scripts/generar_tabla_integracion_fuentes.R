@@ -23,7 +23,9 @@ vv_filtrada <- vv %>%
   filter(INTERVALOS_PLAZAS_CODE == "_T") %>%
   
   # Filtrar municipios: códigos de 5 dígitos que empiezan por 35 o 38
-  filter(grepl("^(35|38)[0-9]{3}$", TERRITORIO_CODE)) %>%
+  filter(grepl("^(35|38)[0-9]{3}(_.+)?$", TERRITORIO_CODE)) %>%
+  
+  mutate(TERRITORIO_CODE = (substr(TERRITORIO_CODE, 1, 5))) %>%
   
   # Extraer el año de TIME_PERIOD_CODE
   mutate(
@@ -117,7 +119,9 @@ vv_filtrada <- vv_filtrada %>%
 
 renta_filtrada <- renta %>%
   # Filtrar municipios: códigos de 5 dígitos que empiezan por 35 o 38
-  filter(grepl("^(35|38)[0-9]{3}$", TERRITORIO_CODE)) %>%
+  filter(grepl("^(35|38)[0-9]{3}(_.+)?$", TERRITORIO_CODE)) %>%
+  
+  mutate(TERRITORIO_CODE = (substr(TERRITORIO_CODE, 1, 5))) %>%
   
   # Filtrar el periodo temporal 2019–2023
   filter(as.numeric(TIME_PERIOD_CODE) >= 2019, as.numeric(TIME_PERIOD_CODE) <= 2023)
@@ -158,7 +162,9 @@ renta_filtrada <- renta_filtrada %>%
 pob_filtrada <- pob %>%
   filter(SEXO_CODE == "_T") %>%
   # Filtrar municipios: códigos de 5 dígitos que empiezan por 35 o 38
-  filter(grepl("^(35|38)[0-9]{3}$", TERRITORIO_CODE)) %>%
+  filter(grepl("^(35|38)[0-9]{3}(_2007)?$", TERRITORIO_CODE)) %>%
+  
+  mutate(TERRITORIO_CODE = (substr(TERRITORIO_CODE, 1, 5))) %>%
   
   # Filtrar el periodo temporal 2019–2023
   filter(as.numeric(TIME_PERIOD_CODE) >= 2019, as.numeric(TIME_PERIOD_CODE) <= 2023)
@@ -243,7 +249,7 @@ tab_total <- tab_total %>%
 
 # Calcular nuevas variables
 tab_total <- tab_total %>%
-  mutate(VIVIENDAS_VACACIONALES_DISPONIBLES_M = (VIVIENDAS_VACACIONALES_DISPONIBLES_M * 1000) / POBLACION) %>%
-  mutate(PLAZAS_DISPONIBLES_M = (PLAZAS_DISPONIBLES_M * 1000) / POBLACION) %>%
-  rename(VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL = VIVIENDAS_VACACIONALES_DISPONIBLES_M) %>%
-  rename(PLAZAS_DISPONIBLES_M_PER_MIL = PLAZAS_DISPONIBLES_M)
+  mutate(VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL = (VIVIENDAS_VACACIONALES_RESERVADAS_M * 1000) / (POBLACION)) %>%
+  mutate(VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL = (VIVIENDAS_VACACIONALES_DISPONIBLES_M * 1000) / (POBLACION)) %>%
+  mutate(PLAZAS_DISPONIBLES_M_PER_MIL = (PLAZAS_DISPONIBLES_M * 1000) / (POBLACION)) %>%
+  relocate(ends_with("PER_MIL"), .after = PLAZAS_DISPONIBLES_M)
