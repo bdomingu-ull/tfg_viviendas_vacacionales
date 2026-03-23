@@ -140,7 +140,7 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQU
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler mediano del total inmueble", x = "Viviendas vacacionales", y = "Alquiler mediano colectivo")
   
 
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
@@ -148,14 +148,14 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUI
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler mediano del total inmueble", x = "Viviendas vacacionales", y = "Alquiler mediano colectivo")
 
 ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_COL)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler mediano del total inmueble", x = "Plazas disponibles", y = "Alquiler mediano colectivo")
 
 #1.2 Unifamiliar
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
@@ -163,7 +163,7 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQU
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler mediano del total inmueble", x = "Viviendas vacacionales", y = "Alquiler mediano unifamiliar")
 
 
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
@@ -171,14 +171,14 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUI
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler mediano del total inmueble", x = "Viviendas vacacionales", y = "Alquiler mediano unifamiliar")
 
 ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_T_INMU_U)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler mediano del total inmueble", x = "Plazas disponibles", y = "Alquiler mediano unifamiliar")
 
 #2.1 Colectivo
 
@@ -187,7 +187,7 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQU
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Viviendas vacacionales", y = "Alquiler mediano colectivo")
 
 
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_M2_COL)) +
@@ -195,14 +195,14 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUI
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Viviendas vacacionales", y = "Alquiler mediano colectivo")
 
 ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_COL)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Plazas disponibles", y = "Alquiler mediano colectivo")
 
 #2.2 Unifamiliar
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
@@ -210,7 +210,7 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, y = ALQU
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales diponibles por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Viviendas vacacionales", y = "Alquiler mediano unifamiliar")
 
 
 ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
@@ -218,55 +218,73 @@ ggplot(tab_total, aes(x = VIVIENDAS_VACACIONALES_RESERVADAS_M_PER_MIL, y = ALQUI
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre viviendas vacacionales reservadas por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Viviendas vacacionales", y = "Alquiler mediano unifamiliar")
 
 ggplot(tab_total, aes(x = PLAZAS_DISPONIBLES_M_PER_MIL, y = ALQUILER_MED_M_M2_U)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre plazas disponibles por 1000 habitantes y el alquiler mediano por metro cuadrado", x = "Plazas disponibles", y = "Alquiler mediano unifamiliar")
 
+#Calculo de la regresión con la renta neta y bruta frente al alquiler
 
-#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
-tabla_correlaciones <- tab_tot_mostrar %>%
-  group_by(TERRITORIO_CODE) %>%
-  summarize(Correlacion = cor(VIVIENDAS_VACACIONALES_DISPONIBLES_M_PER_MIL, 
-                              ALQUILER_MED_M_T_INMU_COL, 
-                              method = "pearson", 
-                              use = "complete.obs"))
-
-#Haremos lo mismo pero con el alquiler mediano por unidad y con la renta media
-
-ggplot(tab_tot_mostrar, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_COL)) +
+#3.1 Renta media
+ggplot(tab_total, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_M2_U)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
-  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre renta neta media por hogar y el alquiler mediano por metro cuadrado", x = "Renta Neta Media", y = "Alquiler mediano unifamliar")
 
-#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
-tabla_correlaciones_NU <- tab_tot_mostrar %>%
-  group_by(TERRITORIO_CODE) %>%
-  summarize(Correlacion = cor(RENTA_NETA_MEDIA_HOGAR, 
-                              ALQUILER_MED_M_T_INMU_COL, 
-                              method = "pearson", 
-                              use = "complete.obs"))
-
-#Ahora con el alquiler mediano por total inmueble familia colectiva
-ggplot(tab_tot_mostrar, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_U)) +
+ggplot(tab_total, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_M2_COL)) +
   geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +
-  facet_wrap(~ TERRITORIO_CODE,scales = "free") +
   stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
   theme_minimal() +
-  labs(title = "Comparación entre viviendas vacacionales y el alquiler", x = "Viviendas vacacionales", y = "Alquiler mediano")
+  labs(title = "Comparación entre renta neta media por hogar y el alquiler mediano por metro cuadrado", x = "Renta Neta Media", y = "Alquiler mediano colectivo")
 
-#Con esto calcularemos los coeficientes de correlación de Perason(Solo hay un ejemplo, el resto se calculará depués)
-tabla_correlaciones_NC <- tab_tot_mostrar %>%
-  group_by(TERRITORIO_CODE) %>%
-  summarize(Correlacion = cor(RENTA_NETA_MEDIA_HOGAR, 
-                              ALQUILER_MED_M_T_INMU_U, 
-                              method = "pearson", 
-                              use = "complete.obs"))
+ggplot(tab_total, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta neta media por hogar y el alquiler mediano total inmueble", x = "Renta Neta Media", y = "Alquiler mediano unifamiliar")
+
+ggplot(tab_total, aes(x = RENTA_NETA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta neta media por hogar y el alquiler mediano total inmueble", x = "Renta Neta Media", y = "Alquiler mediano colectivo")
+
+#3.2 Renta bruta
+ggplot(tab_total, aes(x = RENTA_BRUTA_MEDIA_HOGAR, y = ALQUILER_MED_M_M2_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta bruta media por hogar y el alquiler mediano por metro cuadrado", x = "Renta Bruta Media", y = "Alquiler mediano unifamiliar")
+
+ggplot(tab_total, aes(x = RENTA_BRUTA_MEDIA_HOGAR, y = ALQUILER_MED_M_M2_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta bruta media por hogar y el alquiler mediano por metro cuadrado", x = "Renta Bruta Media", y = "Alquiler mediano colectivo")
+
+ggplot(tab_total, aes(x = RENTA_BRUTA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_U)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta bruta media por hogar y el alquiler mediano total inmbueble", x = "Renta Bruta Media", y = "Alquiler mediano unifamiliar")
+
+ggplot(tab_total, aes(x = RENTA_BRUTA_MEDIA_HOGAR, y = ALQUILER_MED_M_T_INMU_COL)) +
+  geom_point(color = "darkgreen",alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  stat_cor(method = "pearson", label.x.npc = "left", label.y.npc = "top") +
+  theme_minimal() +
+  labs(title = "Comparación entre renta bruta media por hogar y el alquiler mediano total inmbueble", x = "Renta Bruta Media", y = "Alquiler mediano colectivo")
+
+
