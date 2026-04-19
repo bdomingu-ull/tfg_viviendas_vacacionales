@@ -330,6 +330,25 @@ lista_graficos_bivariantes[[1]]
 # Si se quiere versión interactiva del primero:
 ggplotly(lista_graficos_bivariantes[[1]], tooltip = "text")
 
+# Guardar las imagenes generadas en una carpeta
+
+mi_ruta <- "C:/Users/marco/OneDrive/Documentos/tfg_viviendas_vacacionales/figuras_informe/fotos_corr_simple"
+
+lapply(seq_along(lista_graficos_bivariantes), function(i) {
+  # Creamos un nombre de archivo dinámico
+  nombre_archivo <- file.path(mi_ruta, paste0("grafico_corr_simple_", i, ".png"))
+  
+  # Guardamos usando ggsave
+  ggplot2::ggsave(
+    filename = nombre_archivo,
+    plot = lista_graficos_bivariantes[[i]],
+    device = "png",
+    width = 10,
+    height = 7,
+    dpi = 300 # Alta resolución
+  )
+})
+
 # ============================================================
 # 5) Selección orientativa de relaciones más destacadas
 # ============================================================
