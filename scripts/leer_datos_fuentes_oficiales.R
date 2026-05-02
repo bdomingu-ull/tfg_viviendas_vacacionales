@@ -98,3 +98,4 @@ df_censo <- datos_json %>%
   ) %>%
   dplyr::select(nombre_municipio, tipo_vivienda, anio, valor)
 
+

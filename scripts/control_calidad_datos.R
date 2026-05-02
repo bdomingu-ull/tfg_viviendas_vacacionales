@@ -35,6 +35,19 @@ na_por_variable_anio <- tab_total %>%
     .groups = "drop"
   )
 na_por_variable_anio
+
+na_tab_tot <- tab_total %>%
+  # 1. Filtramos para ver solo las filas que tienen algún vacío
+  filter(if_any(everything(), is.na)) %>%
+  # 2. Modificamos las columnas de datos, EXCEPTO las fijas
+  mutate(across(
+    .cols = -c(TERRITORIO_CODE, TIME_PERIOD_CODE), 
+    .fns  = ~ ifelse(is.na(.), NA, "")
+  )) %>%
+  # 3. Quitamos las columnas que no tengan ningún NA tras la limpieza
+  select(TERRITORIO_CODE, TIME_PERIOD_CODE, where(~ any(is.na(.))))
+
+
 # ============================================================
 # 2) Coherencia temporal
 # ============================================================
