@@ -68,8 +68,8 @@ leer_excel <- function(ruta_fichero, hoja) {
 # ============================================================
 # Modifica la ruta del fichero para adaptarla a la carpeta en la que tienes almacenados los datos
 # En la ruta, debemos usar barras del tipo '/' o no compilará el código
-ruta_excel_serpavi <- "C:/Users/marco/OneDrive/Escritorio/Marcos/Universidad/4º Carrera/TFG/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
-#ruta_excel_serpavi <- "C:/Users/benco/Documents/tfg_viviendas_vacacionales/data/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
+#ruta_excel_serpavi <- "C:/Users/marco/OneDrive/Escritorio/Marcos/Universidad/4º Carrera/TFG/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
+ruta_excel_serpavi <- "C:/Users/benco/Documents/tfg_viviendas_vacacionales/data/2025-09-10_bd_SERPAVI_2011-2023.xlsx"
 hoja_excel_serpavi <- "Municipios"
 datos_serpavi <- leer_excel(ruta_excel_serpavi, hoja_excel_serpavi)
 
