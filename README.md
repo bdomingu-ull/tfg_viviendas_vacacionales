@@ -14,9 +14,13 @@ El repositorio se organiza bajo la siguiente estructura de archivos y directorio
 ├── data/
 │   ├── input/                # Archivos de datos originales introducidos para el análisis
 │   └── output/               # Resultados generados automáticamente (tablas CSV de coeficientes y reportes finales)
+├── documents/                # Documentación del Trabajo de Fin de Grado (TFG)
 ├── figuras_informe/
 │   ├── fotos_corr_simple/    # Diagramas de dispersión y correlaciones bivariantes guardadas de forma física
 │   └── fotos_evolucion/      # Gráficos de evolución temporal de las variables clave del panel
-├── analisis_descriptivo.R    # Script 1: Estadísticos descriptivos, filtrado de datos y análisis de correlación
-├── modelos_panel_informe_word.R # Script 2: Estimación econométrica multivariante y generación del informe Word
+├── scripts/
+│   ├── analisis_descriptivo.R    # Script 1: Estadísticos descriptivos, filtrado de datos y análisis de correlación
+│   └── modelos_panel_informe_word.R # Script 2: Estimación econométrica multivariante y generación del informe Word
+├── .gitignore                # Archivos y extensiones excluidos del control de versiones (ej. datos temporales)
+├── tfg_viviendas_vacacionales.Rproj # Archivo de proyecto de RStudio
 └── README.md                 # Presentación, documentación e instrucciones del proyecto
