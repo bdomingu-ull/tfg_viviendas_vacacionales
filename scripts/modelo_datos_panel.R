@@ -430,31 +430,31 @@ tabla_efecto_vacacional <- tabla_coeficientes_panel %>%
 
 write.csv(
   tabla_coeficientes_panel,
-  file = "resultados_coeficientes_panel.csv",
+  file = file.path("data", "output", "resultados_coeficientes_panel.csv"),
   row.names = FALSE
 )
 
 write.csv(
   tabla_estadisticos_panel,
-  file = "resultados_estadisticos_panel.csv",
+  file = file.path("data", "output", "resultados_estadisticos_panel.csv"),
   row.names = FALSE
 )
 
 write.csv(
   tabla_coeficientes_principales,
-  file = "resultados_coeficientes_principales_panel.csv",
+  file = file.path("data", "output", "resultados_coeficientes_principales_panel.csv"),
   row.names = FALSE
 )
 
 write.csv(
   tabla_tests_panel,
-  file = "resultados_tests_panel.csv",
+  file = file.path("data", "output", "resultados_tests_panel.csv"),
   row.names = FALSE
 )
 
 write.csv(
   tabla_efecto_vacacional,
-  file = "resultados_efecto_vacacional_panel.csv",
+  file = file.path("data", "output", "resultados_efecto_vacacional_panel.csv"),
   row.names = FALSE
 )
 
@@ -707,8 +707,8 @@ doc <- doc %>%
 # 11) Guardar documento Word
 # ============================================================
 
-ruta_word <- "resultados_modelos_panel.docx"
+ruta_word <- file.path("data", "output", "resultados_modelos_panel.docx")
 print(doc, target = ruta_word)
 
 cat("Documento Word generado correctamente en:", ruta_word, "\n")
-cat("Archivos CSV generados correctamente.\n")
+cat("Archivos CSV generados correctamente en la carpeta: data/output/\n")
