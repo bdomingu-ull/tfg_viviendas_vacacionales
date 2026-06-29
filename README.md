@@ -6,16 +6,17 @@ El objetivo del proyecto es analizar la posible relación entre la oferta de viv
 
 ---
 
-## ## Estructura del repositorio
+## Estructura del repositorio
 
 El repositorio se organiza bajo la siguiente estructura de archivos y directorios para asegurar la correcta ejecución del flujo de trabajo:
 
 ```text
 ├── data/
-│   ├── output/               # Resultados automatizados (tablas CSV de coeficientes y reportes finales)
-│   └── tab_total.csv         # Base de datos integrada utilizada como origen de los análisis
+│   ├── input/                # Archivos de datos originales introducidos para el análisis
+│   └── output/               # Resultados generados automáticamente (tablas CSV de coeficientes y reportes finales)
 ├── figuras_informe/
-│   └── fotos_corr_simple/    # Directorio de volcado automático para gráficos de evolución y dispersión
+│   ├── fotos_corr_simple/    # Diagramas de dispersión y correlaciones bivariantes guardadas de forma física
+│   └── fotos_evolucion/      # Gráficos de evolución temporal de las variables clave del panel
 ├── analisis_descriptivo.R    # Script 1: Estadísticos descriptivos, filtrado de datos y análisis de correlación
 ├── modelos_panel_informe_word.R # Script 2: Estimación econométrica multivariante y generación del informe Word
 └── README.md                 # Presentación, documentación e instrucciones del proyecto
