@@ -169,6 +169,43 @@ grafico_alquiler_m2_col
 grafico_renta_neta
 
 # ============================================================
+# 3.1) Guardar los gráficos temporales de evolución en la carpeta
+# ============================================================
+
+# Puedes usar la misma ruta de tus otros gráficos:
+mi_ruta_evolucion <- "C:/Users/marco/OneDrive/Documentos/tfg_viviendas_vacacionales/figuras_informe/fotos_evolucion"
+
+# Guardamos el gráfico de evolución de viviendas vacacionales disponibles
+ggplot2::ggsave(
+  filename = file.path(mi_ruta_evolucion, "grafico_evolucion_vv_disponibles.png"),
+  plot = grafico_vv_disp,
+  device = "png",
+  width = 10,
+  height = 7,
+  dpi = 300
+)
+
+# Guardamos el gráfico de evolución del alquiler por m2
+ggplot2::ggsave(
+  filename = file.path(mi_ruta_evolucion, "grafico_evolucion_alquiler_m2_col.png"),
+  plot = grafico_alquiler_m2_col,
+  device = "png",
+  width = 10,
+  height = 7,
+  dpi = 300
+)
+
+# Guardamos el gráfico de evolución de la renta neta por hogar
+ggplot2::ggsave(
+  filename = file.path(mi_ruta_evolucion, "grafico_evolucion_renta_neta.png"),
+  plot = grafico_renta_neta,
+  device = "png",
+  width = 10,
+  height = 7,
+  dpi = 300
+)
+
+# ============================================================
 # 4) Análisis bivariante exploratorio
 # ============================================================
 
