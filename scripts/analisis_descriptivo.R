@@ -78,6 +78,7 @@ tab_mostrar <- tab_total %>%
     across(where(is.numeric) & !matches("^TIME_PERIOD_CODE$"), ~ mean(.x, na.rm = TRUE)),
     .groups = "drop"
   ) %>%
+  drop_na() %>%   # <-- Esta línea elimina cualquier municipio con datos faltantes (NA)
   ungroup()
 
 # Selección de municipios:
